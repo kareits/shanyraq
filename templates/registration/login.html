@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% block title %}Log In{% endblock %}
+{% block content %}
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p class="text-center">
+        You don't have permission to view this page.
+        Please sign in with account having permissions.
+      </p>
+    {% else %}
+      <p class="text-center">
+        Please sign in to view this page. 
+      </p>
+    {% endif %}
+  {% endif %}
+  <div class="col d-flex justify-content-center pt-md-5">
+    <div class="card">
+      <div class="card-header">
+        <h6>Log In</h6>
+      </div>
+      <div class="card-body">
+        <form method="post" action="{% url 'login' %}">
+          {% csrf_token %}
+          {% bootstrap_form form %}
+          <input type="hidden" name="next" value="{{ next }}">
+          <div class="pt-3">
+            <button class="btn btn-primary btn-custom" type="submit">Log In</button>
+          </div>
+        </form>
+        <div class="pt-3">
+          <a class="btn btn-primary btn-custom" href="{% url 'password_reset' %}">Forgot password?</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

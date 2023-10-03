@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}
+  Profile: {{ profile.username }}
+{% endblock %}
+{% block content %}
+  <div class="col d-flex justify-content-center pt-md-5">
+    <div class="card" style="width: 40rem;">
+      <div class="card-header">
+        <h6>{{ profile.username }}</h6>
+      </div>
+      <div class="card-body">
+        <table class="table profile-tbl">
+          <tbody>
+            <tr>
+              <th scope="row">First name</th>
+              <td>{% if profile.first_name %}{{ profile.first_name }}{% else %}Not specified{% endif %}</td>
+            </tr>
+            <tr>
+              <th scope="row">Last name</th>
+              <td>{% if profile.last_name %}{{ profile.last_name }}{% else %}Not specified{% endif %}</td>
+            </tr>
+            <tr>
+              <th scope="row">Email</th>
+              <td>{% if profile.email %}{{ profile.email }}{% else %}Not specified{% endif %}</td>
+            </tr>
+            <tr>
+              <th scope="row">Phone</th>
+              <td>{% if profile.phone %}{{ profile.phone }}{% else %}Not specified{% endif %}</td>
+            </tr>
+            <tr>
+              <th scope="row">Status</th>
+              <td>{% if profile.is_staff %}Administrator{% else %}Guest{% endif %}</td>
+            </tr>
+            <tr>
+              <th scope="row">Joined at</th>
+              <td>{{ profile.date_joined }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="pt-3 text-center">
+          <a class="btn btn-primary btn-custom" href="{% url 'password_change' %}">Change password</a>
+          <a class="btn btn-primary btn-custom" href="{% url 'users:edit_profile' user.username %}">Edit personal information</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
