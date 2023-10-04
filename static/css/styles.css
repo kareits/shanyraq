@@ -205,3 +205,11 @@ border-bottom-color: #fff;
   opacity: 1.0;
   color: #ebb256;
 }
+
+/* Reservations settings */
+.table {
+  --bs-table-active-color: #ebb256;
+  --bs-table-hover-color: #ebb256;
+  --bs-table-striped-color: transparent;
+  --bs-table-border-color: rgb(106, 106, 106);
+}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% load static %}
+{% block title %}
+  Make Reservation
+{% endblock %}
+{% block content %}
+  <div class="col d-flex justify-content-center">
+    <div class="card">
+      <div class="card-header">
+        Make Reservation
+      </div>
+      <div class="card-body">
+        <form method="post">
+          {% csrf_token %}
+          {% bootstrap_form form %}
+          <div class="pt-md-3">
+            <button class="btn btn-primary btn-custom" type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

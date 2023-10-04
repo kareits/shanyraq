@@ -47,14 +47,28 @@ class ReservationAdmin(admin.ModelAdmin):
     """"Settings for Reservation model in admin zone."""
 
     list_display = (
-        'customer', 'date', 'party_size', 'table', 'status', 'created_at',
+        'guest_name', 'guest_phone', 'date_time',
+        'party_size', 'table', 'status',
     )
-    list_editable = ('date', 'table', 'status',)
-    search_fields = ('customer',)
-    list_filter = ('customer',)
-    list_display_links = ('customer',)
+    list_editable = ('table', 'status',)
+    search_fields = (
+        'customer__username', 'customer__first_name', 'customer__last_name'
+    )
+    list_filter = ('date_time', 'status',)
+    list_display_links = ('guest_name',)
     list_per_page = settings.LIST_PER_PAGE
-    ordering = ('date',)
+    ordering = ('date_time',)
+
+    def guest_name(self, obj):
+        """Returns guest's full name or username."""
+        return obj.customer.get_full_name() or obj.customer.username
+
+    def guest_phone(self, obj):
+        """Returns guest's phone."""
+        return obj.customer.phone
+
+    guest_name.short_description = 'Guest'
+    guest_phone.short_description = 'Phone'
 
 
 admin.site.register(Dish, DishAdmin)

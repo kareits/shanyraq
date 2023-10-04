@@ -43,14 +43,14 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
     form_class = CustomUserChangeForm
 
     def get_object(self, queryset=None):
-        """Get object based on the username in URL."""
+        """Gets object based on the username in URL."""
         username = self.kwargs.get('username')
         if not self.model.objects.filter(username=username).exists():
             return None
         return self.model.objects.get(username=username)
 
     def dispatch(self, request, *args, **kwargs):
-        """Authorize client."""
+        """Authorizes client."""
         if self.get_object() != self.request.user:
             return redirect(reverse('restaurant:index'))
         return super().dispatch(request, *args, **kwargs)

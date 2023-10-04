@@ -105,7 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Almaty'
 
 USE_I18N = True
 
@@ -118,7 +118,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -159,6 +159,7 @@ PHONE_FIELD_LENGTH = 18
 MAX_LENGTH = 255
 MIN_NUMBER_OF_SEATS = 1
 MAX_NUMBER_OF_SEATS = 8
+MIN_NUMBER_OF_GUESTS = 1
 RESERVATION_STATUS = [
     ('confirmed', 'Confirmed'),
     ('pending', 'Pending'),
@@ -168,4 +169,7 @@ MIN_PRICE = 1
 MAX_PRICE = 10000
 SHORT_LENGTH = 50
 LIST_PER_PAGE = 15
-
+WORKING_HOURS_START = '12:00'
+WORKING_HOURS_END = '21:30'
+EMPTY_SEATS = 2
+RESERVE_HOURS_RANGE = 2

@@ -3,6 +3,7 @@ from django.conf import settings
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
+from .validators import datetime_validator
 
 CustomUser = get_user_model()
 
@@ -113,8 +114,9 @@ class Reservation(models.Model):
         related_name='reservations',
         verbose_name='Guest',
     )
-    date = models.DateTimeField(
-        verbose_name='Date and time of reservation',
+    date_time = models.DateTimeField(
+        verbose_name='Reservation date',
+        validators=[datetime_validator],
     )
     created_at = models.DateTimeField(
         auto_now_add=True,
@@ -122,7 +124,7 @@ class Reservation(models.Model):
     )
     party_size = models.IntegerField(
         verbose_name='Number of guests',
-        default=1,
+        default=settings.MIN_NUMBER_OF_GUESTS,
         validators=[
             MinValueValidator(
                 settings.MIN_NUMBER_OF_SEATS,
@@ -141,7 +143,7 @@ class Reservation(models.Model):
         on_delete=models.SET_NULL,
         null=True,
         related_name='reservations',
-        verbose_name='Table for reservation',
+        verbose_name='Table',
     )
     status = models.CharField(
         max_length=settings.MAX_LENGTH,
@@ -152,4 +154,4 @@ class Reservation(models.Model):
     class Meta:
         verbose_name = 'Reservation'
         verbose_name_plural = 'Reservations'
-        ordering = ('-date', '-created_at',)
+        ordering = ('date_time', '-created_at',)

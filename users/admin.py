@@ -14,8 +14,9 @@ class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
     model = CustomUser
-    list_display = ('username', 'email', 'phone',)
+    list_display = ('id', 'username', 'email', 'phone',)
     list_editable = ('email', 'phone',)
+    list_display_links = ('username',)
     fieldsets = [
         (None, {'fields': [
             'username', 'email', 'password',
