@@ -149,7 +149,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
 
 # django-phone-field settiings
-PHONENUMBER_DEFAULT_REGION = "KZ"
+PHONENUMBER_DEFAULT_REGION = "US"
 PHONENUMBER_DEFAULT_FORMAT = "INTERNATIONAL"
 PHONE_FIELD_LENGTH = 18
 
@@ -163,7 +163,7 @@ MIN_NUMBER_OF_GUESTS = 1
 RESERVATION_STATUS = [
     ('confirmed', 'Confirmed'),
     ('pending', 'Pending'),
-    ('canceled', 'Canceled'),
+    ('cancelled', 'Cancelled'),
 ]
 MIN_PRICE = 1
 MAX_PRICE = 10000
@@ -173,3 +173,9 @@ WORKING_HOURS_START = '12:00'
 WORKING_HOURS_END = '21:30'
 EMPTY_SEATS = 2
 RESERVE_HOURS_RANGE = 2
+STATUS_PENDING = 'pending'
+STATUS_CANCELLED = 'cancelled'
+STATUS_CONFIRMED = 'confirmed'
+
+# .csv files path with sample data
+CSV_FILES_PATH = 'static/csv_files/'

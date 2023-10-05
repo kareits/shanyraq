@@ -18,7 +18,7 @@
         <div class="carousel-inner">
           {% for dish in dishes %}
             <div class="carousel-item" id="item-{{ forloop.counter0 }}">
-                <img src="{{ dish.image.url }}" class="d-block w-100" alt="{{ dish.name }}">
+              <a href="{% url 'restaurant:dish_detail' dish.pk %}"><img src="{{ dish.image.url }}" class="d-block w-100" alt="{{ dish.name }}"></a>
                 <div class="carousel-caption d-none d-md-block">
                     <h5>{{ dish.name }}</h5>
                     <p>{{ dish.description_short }}</p>

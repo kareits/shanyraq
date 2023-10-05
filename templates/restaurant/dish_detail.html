@@ -29,11 +29,21 @@
             <div class="row">
                 {{ dish.description|linebreaks }}
             </div>
-            <a class="btn btn-primary btn-custom" href="{% url 'restaurant:category' dish.category_id %}">Back</a>
+            <a class="btn btn-custom" id="backButton">Back</a>
           </div>
         </div>
       </div>
     </div>
   </section>
   <section class="col-md-1"></section>
+  <script>
+    // Script to navigate to the previous page
+    document.getElementById('backButton').addEventListener('click', function() {
+        if (window.history.length > 1) {
+            window.history.back();
+        } else {
+            window.location.href = '/';
+        }
+    });
+</script>
 {% endblock %}

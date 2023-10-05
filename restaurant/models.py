@@ -148,7 +148,7 @@ class Reservation(models.Model):
     status = models.CharField(
         max_length=settings.MAX_LENGTH,
         choices=settings.RESERVATION_STATUS,
-        default='pending',
+        default=settings.STATUS_PENDING,
     )
 
     class Meta:

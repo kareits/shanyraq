@@ -1,11 +1,11 @@
 from django.conf import settings
 from django.db import models
-from django.contrib.auth.models import BaseUserManager, AbstractUser
+from django.contrib.auth.models import UserManager, AbstractUser
 
 from phonenumber_field.modelfields import PhoneNumberField
 
 
-class CustomUserManager(BaseUserManager):
+class CustomUserManager(UserManager):
     """Manager to create custom user."""
 
     pass
@@ -22,7 +22,6 @@ class CustomUser(AbstractUser):
             'unique': 'User with this phone number already exists.',
         },
         blank=True,
-        region='KZ',
     )
     email = models.EmailField(
         verbose_name='email',

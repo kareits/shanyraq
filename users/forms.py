@@ -10,7 +10,7 @@ CustomUser = get_user_model()
 class CustomUserCreationForm(UserCreationForm):
     """Custom User Creation Form."""
 
-    phone = PhoneNumberField(region='KZ')
+    phone = PhoneNumberField()
 
     class Meta(UserCreationForm.Meta):
         model = CustomUser
@@ -20,7 +20,7 @@ class CustomUserCreationForm(UserCreationForm):
 class CustomUserChangeForm(UserChangeForm):
     """Custom User Change Form."""
 
-    phone = PhoneNumberField(region='KZ')
+    phone = PhoneNumberField()
 
     class Meta(UserChangeForm.Meta):
         model = CustomUser

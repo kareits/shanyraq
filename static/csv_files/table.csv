@@ -1,0 +1,16 @@
+table_number;capacity;is_active
+1;2;True
+2;2;True
+3;2;True
+4;2;True
+5;2;True
+6;2;True
+7;4;True
+8;4;True
+9;4;True
+10;4;True
+11;6;True
+12;6;True
+13;6;True
+14;8;True
+15;8;True

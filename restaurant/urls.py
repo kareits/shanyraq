@@ -7,12 +7,26 @@ from .views import (
     ReservationListView,
     ReservationCreateView,
     ReservationUpdateView,
+    cancel_reservation,
     get_categories,
 )
 
 
 app_name = 'restaurant'
-
+reservation_urls = [
+    path('', ReservationListView.as_view(), name='reservation'),
+    path(
+        'create/',
+        ReservationCreateView.as_view(),
+        name='reservation_create',
+    ),
+    path(
+        '<int:pk>/update/',
+        ReservationUpdateView.as_view(),
+        name='reservation_update',
+    ),
+    path('<int:pk>/cancel/', cancel_reservation, name='reservation_cancel',),
+]
 urlpatterns = [
     path('', DishListView.as_view(), name='index'),
     path(
@@ -22,24 +36,5 @@ urlpatterns = [
     ),
     path('categories/', get_categories, name='categories'),
     path('dishes/<int:pk>', DishDetailView.as_view(), name='dish_detail'),
-    path(
-        'reservation/',
-        ReservationListView.as_view(),
-        name='reservation'
-    ),
-    path(
-        'reservation/create/',
-        ReservationCreateView.as_view(),
-        name='reservation_create',
-    ),
-    path(
-        'reservation/<int:pk>/update/',
-        ReservationUpdateView.as_view(),
-        name='reservation_update',
-    ),
-    path(
-        'reservation/<int:pk>/cancel/',
-        ReservationUpdateView.as_view(),
-        name='reservation_cancel',
-    ),
+    path('reservation/', include(reservation_urls)),
 ]
