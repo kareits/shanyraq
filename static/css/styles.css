@@ -1,7 +1,9 @@
 /* Settings for index.html body background */
 body {
+  background-image: url('/static/img/black_marble.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-size: cover;
   color: white;
   overflow-x: hidden;
 }
