@@ -3,11 +3,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.conf import settings
 from django.http import JsonResponse
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
 from django.urls import reverse
 from django.views.generic import (
-    CreateView, DeleteView, ListView, UpdateView
+    CreateView, DeleteView, ListView, UpdateView, TemplateView,
 )
 
 from .mixins import SharedReservationMixin
@@ -100,6 +100,12 @@ class ReservationUpdateView(SharedReservationMixin, UpdateView):
         return super().dispatch(request, *args, **kwargs)
 
 
+class ContactPageView(TemplateView):
+    """Shows Contact page."""
+
+    template_name = 'restaurant/contact.html'
+
+
 def get_categories(reqeust):
     """Retrieves the list of categories and converts it into json."""
     queryset = Category.objects.all()
@@ -121,3 +127,23 @@ def cancel_reservation(request, pk):
     reservation.status = settings.STATUS_CANCELLED
     reservation.save()
     return JsonResponse({'message': 'Reservation has been cancelled.'})
+
+
+def page_not_found(request, exception):
+    """Renders 404 Not Found Page."""
+    return render(request, 'errors/404.html', status=404)
+
+
+def csrf_failure(request, reason=''):
+    """Renders 403 Error Page."""
+    return render(request, 'errors/403csrf.html', status=403)
+
+
+def handler500(request):
+    """Renders 500 Internal Server Error Page."""
+    return render(request, 'errors/500.html', status=500)
+
+
+def handler400(request, exception):
+    """Renders 400 Bad Request Page."""
+    return render(request, 'errors/400.html', status=400)

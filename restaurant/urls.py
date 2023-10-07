@@ -7,6 +7,7 @@ from .views import (
     ReservationListView,
     ReservationCreateView,
     ReservationUpdateView,
+    ContactPageView,
     cancel_reservation,
     get_categories,
 )
@@ -37,4 +38,5 @@ urlpatterns = [
     path('categories/', get_categories, name='categories'),
     path('dishes/<int:pk>', DishDetailView.as_view(), name='dish_detail'),
     path('reservation/', include(reservation_urls)),
+    path('contact/', ContactPageView.as_view(), name='contact'),
 ]

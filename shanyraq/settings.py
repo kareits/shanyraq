@@ -15,8 +15,14 @@ SECRET_KEY = 'django-insecure-wht38t=7l&vpr^7si5n!%h%n-p6cyi#ca21%vo4_ivtck&e*bl
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'local',
+    '127.0.0.1',
+]
 
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
 
 # Application definition
 
@@ -179,3 +185,6 @@ STATUS_CONFIRMED = 'confirmed'
 
 # .csv files path with sample data
 CSV_FILES_PATH = 'static/csv_files/'
+
+# Custom 403 error page view
+CSRF_FAILURE_VIEW = 'restaurant.views.csrf_failure'

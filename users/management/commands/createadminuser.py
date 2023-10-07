@@ -1,3 +1,5 @@
+import getpass
+
 from django.apps import apps
 from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
@@ -52,13 +54,13 @@ class Command(BaseCommand):
                     break
         # Prompt for password and validate it
         while True:
-            password1 = input('Enter password: ')
+            password1 = getpass.getpass('Enter password: ')
             try:
                 validate_password(password1)
             except ValidationError as e:
                 self.stderr.write(self.style.ERROR(f'Invalid password: {e}'))
             else:
-                password2 = input('Repeat password: ')
+                password2 = getpass.getpass('Repeat password: ')
                 if password1 != password2:
                     self.stderr.write(self.style.ERROR(
                         'Passwords do not match.'

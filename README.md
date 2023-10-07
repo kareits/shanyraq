@@ -5,6 +5,64 @@
 Shanyraq is a web application for a restaurant called "Shanyraq", which translates to "the top of a traditional house of nomads." This project was created as part of the final assignment for 'CS50 Introduction to Computer Science.'
 
 
+## Project Structure
+shanyraq_project/
+├── media/
+│   └── dishes                # Contains images for dish entries in Dish model
+├── restaurant/               # Restaurant application
+│   ├── management
+│   │   └── commands
+│   │       └── import_data   # Script for Django Management command to import sample data, if database is empty. Run `python manage.py import_data`
+│   ├── migrations/           # Database migration files.
+│   │   └── ...               # Auto-generated migration files.
+│   ├── __init__.py           # Initialization file for the restaurant app.
+│   ├── admin.py              # Admin panel configurations.
+│   ├── apps.py               # App configuration.
+│   ├── forms.py              # Forms for restaurant application views.
+│   ├── mixins.py             # View class mixin for restaurant views.
+│   ├── models.py             # Define database models for the restaurant app.
+│   ├── urls.py               # URL routing for restaurant app.
+│   ├── validators.py         # Validators for forms and models.
+│   └── views.py              # Define views and view functions for the restaurant app.
+├── sent_emails/              # Auto-generated folder for storing emails sent by Django emain backend
+├── shanyraq/                 # Main project
+│   ├── __init__.py
+│   ├── asgi.py               # ASGI configuration for deployment.
+│   ├── settings.py           # Project-wide settings and configurations.
+│   ├── urls.py               # URL routing for the project.
+│   └── wsgi.py               # ASGI configuration for deployment.
+├── static/                   # Directory for static files (CSS, images, etc.)
+│   ├── css/
+│   │   └── styles.css        # Custom css settings
+│   ├── csv_fiels/            # .csv files to import sample data into database
+│   │   └── ...
+│   └── img/
+│       └── fav/              # Favicon icons
+│       └── ...               # Images for background and logo
+├── templates/
+│   ├── errors/               # Folder with custom templates for error pages
+│   ├── includes/             # Folder with include parts for templates (e.g. footer, header)
+│   ├── registration/         # Folder with templates for login, logout, registration, password change, password reset, etc.
+│   ├── restaurant/           # Folder with templates for restaurant app
+│   ├── users/                # Folder with templates for users app (profile details and profile update)
+│   ├── base.html             # Base template that other templates can extend.
+├── users/                    # Users application
+│   ├── management
+│   │   └── commands
+│   │       └── createadminuser.py   # Script to create a user with admin rights. Run `python manage.py createadminuser`
+│   ├── __init__.py
+│   ├── admin.py              # Admin panel configurations of CustomUser model.
+│   ├── apps.py               # App configuration.
+│   ├── forms.py              # Forms for Users views.
+│   ├── models.py             # Define database models for the Users app.
+│   ├── urls.py               # URL routing for Users app.
+│   └── views.py              # Define views and view functions for the restaurant app.
+├── .gitignore                # File with list of objects preventing them from sending to GitHub repository
+├── db.sqlite3                # Database of the project
+├── manage.py                 # Django management script for various tasks.
+└── requirements.txt          # List of required Python packages and their versions.
+
+
 ## How to Launch the Application:
 
 1. Clone repository:

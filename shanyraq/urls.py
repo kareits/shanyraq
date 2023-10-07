@@ -7,6 +7,10 @@ from django.views.generic.edit import CreateView
 from users.forms import CustomUserCreationForm
 
 
+handler404 = 'restaurant.views.page_not_found'
+handler400 = 'restaurant.views.handler400'
+handler500 = 'restaurant.views.handler500'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('django.contrib.auth.urls')),
