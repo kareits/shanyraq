@@ -6,6 +6,7 @@ Shanyraq is a web application for a restaurant called "Shanyraq", which translat
 
 
 ## Project Structure
+```
 shanyraq_project/
 ├── media/
 │   └── dishes                # Contains images for dish entries in Dish model
@@ -61,7 +62,7 @@ shanyraq_project/
 ├── db.sqlite3                # Database of the project
 ├── manage.py                 # Django management script for various tasks.
 └── requirements.txt          # List of required Python packages and their versions.
-
+```
 
 ## How to Launch the Application:
 
