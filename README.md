@@ -1,6 +1,11 @@
 # SHANYRAQ
 
 
+## Video demo
+Short presentation video can be found here: 
+https://youtu.be/PUKAGE93dms
+
+
 ## Description
 Shanyraq is a web application for a restaurant called "Shanyraq", which translates to "the top of a traditional house of nomads." This project was created as part of the final assignment for 'CS50 Introduction to Computer Science.'
 
